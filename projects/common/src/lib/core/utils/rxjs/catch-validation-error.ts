@@ -12,12 +12,12 @@ export const SERVER_ERROR_KIND = 'serverError';
  * @param field Form field to catch an error for.
  */
 export function catchValidationData<T extends Record<string, unknown>, R>(
-	field: FieldTree<T>,
+    field: FieldTree<T>,
 ): OperatorFunction<R, R | TreeValidationResult> {
-	return source$ =>
-		source$.pipe(
-			catchValidationError(({ validationData }) => of(collectValidationErrors(validationData, field))),
-		);
+    return source$ =>
+        source$.pipe(
+            catchValidationError(({ validationData }) => of(collectValidationErrors(validationData, field))),
+        );
 }
 
 /**
@@ -26,15 +26,15 @@ export function catchValidationData<T extends Record<string, unknown>, R>(
  * @param selector Selector.
  */
 export function catchValidationError<TEntity extends Record<string, unknown>, T, R>(
-	selector: (error: AppValidationError<TEntity>) => Observable<R>,
+    selector: (error: AppValidationError<TEntity>) => Observable<R>,
 ): OperatorFunction<T, T | R> {
-	return catchError((error: unknown) => {
-		if (error instanceof AppValidationError) {
-			return selector(error);
-		}
+    return catchError((error: unknown) => {
+        if (error instanceof AppValidationError) {
+            return selector(error);
+        }
 
-		return throwError(() => error);
-	});
+        return throwError(() => error);
+    });
 }
 
 /**
@@ -43,32 +43,32 @@ export function catchValidationError<TEntity extends Record<string, unknown>, T,
  * @param field Field tree.
  */
 function collectValidationErrors(
-	errors: EntityValidationErrors<Record<string, unknown>>,
-	field: FieldTree<Record<string, unknown>>,
+    errors: EntityValidationErrors<Record<string, unknown>>,
+    field: FieldTree<Record<string, unknown>>,
 ): WithOptionalFieldTree<ValidationError>[] {
-	return Object.keys(errors).flatMap(key => {
-		const error = errors[key];
+    return Object.keys(errors).flatMap(key => {
+        const error = errors[key];
 
-		if (error == null) {
-			return [];
-		}
+        if (error == null) {
+            return [];
+        }
 
-		const fieldTree = field[key];
+        const fieldTree = field[key];
 
-		if (typeof error === 'string' || Array.isArray(error)) {
-			return [
-				{
-					kind: SERVER_ERROR_KIND,
-					message: typeof error === 'string' ? error : (error.at(0) ?? ''),
-					fieldTree,
-				},
-			];
-		}
+        if (typeof error === 'string' || Array.isArray(error)) {
+            return [
+                {
+                    kind: SERVER_ERROR_KIND,
+                    message: typeof error === 'string' ? error : (error.at(0) ?? ''),
+                    fieldTree,
+                },
+            ];
+        }
 
-		return fieldTree != null && typeof fieldTree().value() === 'object' && isNestedValidationErrors(error) ?
-			collectValidationErrors(error, fieldTree as FieldTree<Record<string, unknown>>) :
-			[];
-	});
+        return fieldTree != null && typeof fieldTree().value() === 'object' && isNestedValidationErrors(error) ?
+            collectValidationErrors(error, fieldTree as FieldTree<Record<string, unknown>>) :
+            [];
+    });
 }
 
 /**
@@ -77,7 +77,7 @@ function collectValidationErrors(
  * @param value Value to check.
  */
 function isNestedValidationErrors(
-	value: string | readonly string[] | EntityValidationErrors<Record<string, unknown>>,
+    value: string | readonly string[] | EntityValidationErrors<Record<string, unknown>>,
 ): value is EntityValidationErrors<Record<string, unknown>> {
-	return typeof value === 'object' && !Array.isArray(value);
+    return typeof value === 'object' && !Array.isArray(value);
 }

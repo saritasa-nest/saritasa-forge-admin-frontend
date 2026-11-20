@@ -8,19 +8,19 @@ import { AppConfig } from './app.config';
  */
 @Service()
 export class AppUrlsConfig {
-	private readonly appConfigService = inject(AppConfig);
+    private readonly appConfigService = inject(AppConfig);
 
-	/**
-	 * Checks whether the url is application-scoped.
-	 * @param url Url to check.
-	 */
-	public isApplicationUrl(url: string): boolean {
-		return url.startsWith(this.appConfigService.apiUrl);
-	}
+    /**
+     * Checks whether the url is application-scoped.
+     * @param url Url to check.
+     */
+    public isApplicationUrl(url: string): boolean {
+        return url.startsWith(this.appConfigService.apiUrl);
+    }
 
-	private toApi(...args: readonly string[]): string {
-		const path = args.join('/');
+    private toApi(...args: readonly string[]): string {
+        const path = args.join('/');
 
-		return this.appConfigService.apiUrl + path;
-	}
+        return this.appConfigService.apiUrl + path;
+    }
 }

@@ -1,49 +1,49 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-	"compileOnSave": false,
-	"compilerOptions": {
-		"paths": {
-			"@nf/common/*": ["./projects/common/src/lib/*"],
-			"@nf/common/testing/*": ["./projects/common/src/testing/*"],
-			"@nf/web/shared/*": ["./projects/web/src/app/features/shared/*"]
-		},
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"strict": true,
-		"noImplicitOverride": true,
-		"noPropertyAccessFromIndexSignature": true,
-		"noImplicitReturns": true,
-		"noFallthroughCasesInSwitch": true,
-		"noUncheckedIndexedAccess": true,
-		"sourceMap": true,
-		"skipLibCheck": true,
-		"isolatedModules": true,
-		"experimentalDecorators": true,
-		"moduleResolution": "bundler",
-		"importHelpers": true,
-		"resolveJsonModule": true,
-		"target": "es2025",
-		"module": "esnext"
-	},
-	"angularCompilerOptions": {
-		"enableI18nLegacyMessageIdFormat": false,
-		"strictInjectionParameters": true,
-		"strictInputAccessModifiers": true,
-		"strictTemplates": true
-	},
-	"files": [],
-	"references": [
-		{
-			"path": "./projects/web/tsconfig.app.json"
-		},
-		{
-			"path": "./projects/web/tsconfig.spec.json"
-		},
-		{
-			"path": "./projects/common/tsconfig.lib.json"
-		},
-		{
-			"path": "./projects/common/tsconfig.spec.json"
-		}
-	]
+    "compileOnSave": false,
+    "compilerOptions": {
+        "paths": {
+            "@nf/common/*": ["./projects/common/src/lib/*"],
+            "@nf/common/testing/*": ["./projects/common/src/testing/*"],
+            "@nf/web/shared/*": ["./projects/web/src/app/features/shared/*"]
+        },
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitOverride": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUncheckedIndexedAccess": true,
+        "sourceMap": true,
+        "skipLibCheck": true,
+        "isolatedModules": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "bundler",
+        "importHelpers": true,
+        "resolveJsonModule": true,
+        "target": "es2025",
+        "module": "esnext"
+    },
+    "angularCompilerOptions": {
+        "enableI18nLegacyMessageIdFormat": false,
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": true,
+        "strictTemplates": true
+    },
+    "files": [],
+    "references": [
+        {
+            "path": "./projects/web/tsconfig.app.json"
+        },
+        {
+            "path": "./projects/web/tsconfig.spec.json"
+        },
+        {
+            "path": "./projects/common/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/common/tsconfig.spec.json"
+        }
+    ]
 }

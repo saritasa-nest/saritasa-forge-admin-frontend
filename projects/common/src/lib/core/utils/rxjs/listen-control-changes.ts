@@ -17,22 +17,22 @@ export const DEFAULT_DEBOUNCE_TIME = 300;
  * @param time Debounce time.
  */
 export function listenControlChanges<T extends z.ZodType<unknown>>(
-	control: AbstractControl,
-	schema: T,
-	compare?: (x: z.infer<T>, y: z.infer<T>) => boolean,
-	time: number = DEFAULT_DEBOUNCE_TIME,
+    control: AbstractControl,
+    schema: T,
+    compare?: (x: z.infer<T>, y: z.infer<T>) => boolean,
+    time: number = DEFAULT_DEBOUNCE_TIME,
 ): Observable<z.infer<typeof schema>> {
-	return defer(() =>
-		control.valueChanges.pipe(
-			startWith(control.value),
-			tap(value => {
-				const result = schema.safeParse(value);
-				if (!result.success) {
-					console.warn('Validation error: ', result.error);
-				}
-			}),
-			filter((value): value is z.infer<typeof schema> => schema.safeParse(value).success),
-			debounceTime(time),
-			distinctUntilChanged(compare),
-		));
+    return defer(() =>
+        control.valueChanges.pipe(
+            startWith(control.value),
+            tap(value => {
+                const result = schema.safeParse(value);
+                if (!result.success) {
+                    console.warn('Validation error: ', result.error);
+                }
+            }),
+            filter((value): value is z.infer<typeof schema> => schema.safeParse(value).success),
+            debounceTime(time),
+            distinctUntilChanged(compare),
+        ));
 }

@@ -1,4 +1,4 @@
 {
-	"eslint.validate": ["javascript", "typescript", "html"],
-	"stylelint.validate": ["css", "scss", "less"]
+    "eslint.validate": ["javascript", "typescript", "html"],
+    "stylelint.validate": ["css", "scss", "less"]
 }

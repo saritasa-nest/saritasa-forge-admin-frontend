@@ -7,9 +7,9 @@ import { type NonNullableProperties } from './types/non-nullable-properties';
  * @param value Value to assert.
  */
 export function assertNonNull<T>(value: T): asserts value is NonNullable<T> {
-	if (value == null) {
-		throw new AppError('Unexpected null.');
-	}
+    if (value == null) {
+        throw new AppError('Unexpected null.');
+    }
 }
 
 /**
@@ -18,8 +18,8 @@ export function assertNonNull<T>(value: T): asserts value is NonNullable<T> {
  */
 // polyfill for assertion return https://github.com/microsoft/TypeScript/issues/40562
 export function assertNonNullWithReturn<T>(value: T | null | undefined): NonNullable<T> {
-	assertNonNull(value);
-	return value;
+    assertNonNull(value);
+    return value;
 }
 
 /**
@@ -41,9 +41,9 @@ export function assertNonNullWithReturn<T>(value: T | null | undefined): NonNull
  * ```
  */
 export function assertNonNullablePropertiesWithReturn<T extends Record<string, unknown>, K extends keyof T>(
-	object: T,
-	...keys: K[]
+    object: T,
+    ...keys: K[]
 ): NonNullableProperties<T, K> {
-	keys.forEach(key => assertNonNull(object[key]));
-	return object as unknown as NonNullableProperties<T, K>;
+    keys.forEach(key => assertNonNull(object[key]));
+    return object as unknown as NonNullableProperties<T, K>;
 }

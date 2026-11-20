@@ -7,11 +7,11 @@ import { catchError, tap } from 'rxjs/operators';
  * @example observable$.pipe(onMessageOrFailed(() => ...));
  */
 export function onMessageOrFailed<T>(callback: () => void): MonoTypeOperatorFunction<T> {
-	return pipe(
-		tap(() => callback()),
-		catchError((e: unknown) => {
-			callback();
-			throw e;
-		}),
-	);
+    return pipe(
+        tap(() => callback()),
+        catchError((e: unknown) => {
+            callback();
+            throw e;
+        }),
+    );
 }

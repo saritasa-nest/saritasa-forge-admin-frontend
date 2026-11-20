@@ -13,14 +13,14 @@ import { WebAppConfig } from './app/features/shared/web-app.config';
 import { provideWebAppRoutes } from './app/features/shared/web-route-paths';
 
 bootstrapApplication(AppComponent, {
-	providers: [
-		provideZonelessChangeDetection(),
-		importProvidersFrom(BrowserModule),
-		{ provide: AppConfig, useClass: WebAppConfig },
-		provideHttpClient(),
-		provideRouter(appRoutes),
-		provideWebAppRoutes(),
-		provideStorage(),
-		provideLuxonDateAdapter(),
-	],
+    providers: [
+        provideZonelessChangeDetection(),
+        importProvidersFrom(BrowserModule),
+        { provide: AppConfig, useClass: WebAppConfig },
+        provideHttpClient(),
+        provideRouter(appRoutes),
+        provideWebAppRoutes(),
+        provideStorage(),
+        provideLuxonDateAdapter(),
+    ],
 }).catch(err => console.error(err));

@@ -6,13 +6,13 @@ import { catchError, type ObservableInput, type ObservedValueOf, type OperatorFu
  * @param callback Errors selector.
  */
 export function catchHttpErrorResponse<T, R extends ObservableInput<unknown>>(
-	callback: (error: HttpErrorResponse) => R,
+    callback: (error: HttpErrorResponse) => R,
 ): OperatorFunction<T, T | ObservedValueOf<R>> {
-	return catchError((error: unknown) => {
-		if (error instanceof HttpErrorResponse) {
-			return callback(error);
-		}
+    return catchError((error: unknown) => {
+        if (error instanceof HttpErrorResponse) {
+            return callback(error);
+        }
 
-		throw error;
-	});
+        throw error;
+    });
 }

@@ -8,64 +8,64 @@ import { AppError } from '../models/app-error';
 import { AppErrorMapper } from './app-error.mapper';
 
 describe('AppErrorMapper', () => {
-	let observerSpy: Observer<unknown>;
+    let observerSpy: Observer<unknown>;
 
-	beforeEach(() => {
-		observerSpy = createObserverSpy();
-	});
+    beforeEach(() => {
+        observerSpy = createObserverSpy();
+    });
 
-	describe('.catchHttpErrorToAppError(x)', () => {
-		describe('when HttpErrorResponse is thrown', () => {
-			const httpError$ = throwError(() => new HttpErrorResponse(getHttpStatusData(HttpStatusCode.Unauthorized)));
+    describe('.catchHttpErrorToAppError(x)', () => {
+        describe('when HttpErrorResponse is thrown', () => {
+            const httpError$ = throwError(() => new HttpErrorResponse(getHttpStatusData(HttpStatusCode.Unauthorized)));
 
-			it('returns AppError', () => {
-				httpError$.pipe(AppErrorMapper.catchHttpErrorToAppError()).subscribe(observerSpy);
+            it('returns AppError', () => {
+                httpError$.pipe(AppErrorMapper.catchHttpErrorToAppError()).subscribe(observerSpy);
 
-				expect(observerSpy.next).not.toHaveBeenCalled();
-				expect(observerSpy.error).toHaveBeenCalledWith(expect.any(AppError));
-			});
-		});
+                expect(observerSpy.next).not.toHaveBeenCalled();
+                expect(observerSpy.error).toHaveBeenCalledWith(expect.any(AppError));
+            });
+        });
 
-		describe('when non-http error is thrown', () => {
-			const error$ = throwError(() => new Error('Some other error'));
+        describe('when non-http error is thrown', () => {
+            const error$ = throwError(() => new Error('Some other error'));
 
-			it('passes the error', () => {
-				error$.pipe(AppErrorMapper.catchHttpErrorToAppError()).subscribe(observerSpy);
+            it('passes the error', () => {
+                error$.pipe(AppErrorMapper.catchHttpErrorToAppError()).subscribe(observerSpy);
 
-				expect(observerSpy.next).not.toHaveBeenCalled();
-				expect(observerSpy.error).toHaveBeenCalledWith(expect.any(Error));
-				expect(observerSpy.error).not.toHaveBeenCalledWith(expect.any(AppError));
-			});
-		});
-	});
+                expect(observerSpy.next).not.toHaveBeenCalled();
+                expect(observerSpy.error).toHaveBeenCalledWith(expect.any(Error));
+                expect(observerSpy.error).not.toHaveBeenCalledWith(expect.any(AppError));
+            });
+        });
+    });
 
-	describe('.catchHttpErrorToAppErrorWithValidationSupport(x)', () => {
-		describe('when HttpErrorResponse is thrown', () => {
-			const error$ = throwError(() => new HttpErrorResponse(getHttpStatusData(HttpStatusCode.BadRequest)));
+    describe('.catchHttpErrorToAppErrorWithValidationSupport(x)', () => {
+        describe('when HttpErrorResponse is thrown', () => {
+            const error$ = throwError(() => new HttpErrorResponse(getHttpStatusData(HttpStatusCode.BadRequest)));
 
-			it('throws AppError', () => {
-				const mapperSpy = vi.fn();
+            it('throws AppError', () => {
+                const mapperSpy = vi.fn();
 
-				error$.pipe(AppErrorMapper.catchHttpErrorToAppErrorWithValidationSupport(mapperSpy)).subscribe(observerSpy);
+                error$.pipe(AppErrorMapper.catchHttpErrorToAppErrorWithValidationSupport(mapperSpy)).subscribe(observerSpy);
 
-				expect(observerSpy.next).not.toHaveBeenCalled();
-				expect(observerSpy.error).toHaveBeenCalledTimes(1);
-				expect(observerSpy.error).toHaveBeenCalledWith(expect.any(AppError));
-			});
-		});
+                expect(observerSpy.next).not.toHaveBeenCalled();
+                expect(observerSpy.error).toHaveBeenCalledTimes(1);
+                expect(observerSpy.error).toHaveBeenCalledWith(expect.any(AppError));
+            });
+        });
 
-		describe('when non-http error is thrown', () => {
-			const error$ = throwError(() => new Error('any other error'));
+        describe('when non-http error is thrown', () => {
+            const error$ = throwError(() => new Error('any other error'));
 
-			it('passes the error', () => {
-				const mapperSpy = vi.fn();
+            it('passes the error', () => {
+                const mapperSpy = vi.fn();
 
-				error$.pipe(AppErrorMapper.catchHttpErrorToAppErrorWithValidationSupport(mapperSpy)).subscribe(observerSpy);
+                error$.pipe(AppErrorMapper.catchHttpErrorToAppErrorWithValidationSupport(mapperSpy)).subscribe(observerSpy);
 
-				expect(observerSpy.next).not.toHaveBeenCalled();
-				expect(observerSpy.error).toHaveBeenCalledWith(expect.any(Error));
-				expect(observerSpy.error).not.toHaveBeenCalledWith(expect.any(AppError));
-			});
-		});
-	});
+                expect(observerSpy.next).not.toHaveBeenCalled();
+                expect(observerSpy.error).toHaveBeenCalledWith(expect.any(Error));
+                expect(observerSpy.error).not.toHaveBeenCalledWith(expect.any(AppError));
+            });
+        });
+    });
 });

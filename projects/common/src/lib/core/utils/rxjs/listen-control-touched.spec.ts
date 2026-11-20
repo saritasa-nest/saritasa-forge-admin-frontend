@@ -4,98 +4,98 @@ import { type Subscription } from 'rxjs';
 import { listenControlTouched } from './listen-control-touched';
 
 describe('listenControlTouched(x)', () => {
-	let subscriptions: Subscription[];
+    let subscriptions: Subscription[];
 
-	beforeEach(() => {
-		subscriptions = [];
-	});
+    beforeEach(() => {
+        subscriptions = [];
+    });
 
-	afterEach(() => {
-		subscriptions.forEach(subscription => subscription.unsubscribe());
-	});
+    afterEach(() => {
+        subscriptions.forEach(subscription => subscription.unsubscribe());
+    });
 
-	describe('after subscription', () => {
-		describe('control touched', () => {
-			it('emits true', () => {
-				const control = new FormControl(null);
-				let value = false;
+    describe('after subscription', () => {
+        describe('control touched', () => {
+            it('emits true', () => {
+                const control = new FormControl(null);
+                let value = false;
 
-				subscriptions.push(
-					listenControlTouched(control).subscribe(isTouched => {
-						value = isTouched;
-					}),
-				);
-				control.markAsTouched();
+                subscriptions.push(
+                    listenControlTouched(control).subscribe(isTouched => {
+                        value = isTouched;
+                    }),
+                );
+                control.markAsTouched();
 
-				expect(value).toBe(true);
-			});
+                expect(value).toBe(true);
+            });
 
-			it('has correct value of "touched" property', () => {
-				const control = new FormControl(null);
-				let value = false;
+            it('has correct value of "touched" property', () => {
+                const control = new FormControl(null);
+                let value = false;
 
-				subscriptions.push(
-					listenControlTouched(control).subscribe(() => {
-						value = control.touched;
-					}),
-				);
+                subscriptions.push(
+                    listenControlTouched(control).subscribe(() => {
+                        value = control.touched;
+                    }),
+                );
 
-				control.markAsTouched();
+                control.markAsTouched();
 
-				expect(value).toBe(true);
-			});
-		});
+                expect(value).toBe(true);
+            });
+        });
 
-		describe('control reset', () => {
-			it('emits false', () => {
-				const control = new FormControl(null);
-				let value = false;
-				subscriptions.push(
-					listenControlTouched(control).subscribe(isTouched => {
-						value = isTouched;
-					}),
-				);
+        describe('control reset', () => {
+            it('emits false', () => {
+                const control = new FormControl(null);
+                let value = false;
+                subscriptions.push(
+                    listenControlTouched(control).subscribe(isTouched => {
+                        value = isTouched;
+                    }),
+                );
 
-				control.markAsTouched();
-				expect(value).toBe(true);
-				control.reset();
-				expect(value).toBe(false);
-			});
-		});
-	});
+                control.markAsTouched();
+                expect(value).toBe(true);
+                control.reset();
+                expect(value).toBe(false);
+            });
+        });
+    });
 
-	describe('before subscription', () => {
-		describe('control touched', () => {
-			it('emits true', () => {
-				const control = new FormControl(null);
-				let value = false;
+    describe('before subscription', () => {
+        describe('control touched', () => {
+            it('emits true', () => {
+                const control = new FormControl(null);
+                let value = false;
 
-				control.markAsTouched();
-				subscriptions.push(
-					listenControlTouched(control).subscribe(isTouched => {
-						value = isTouched;
-					}),
-				);
+                control.markAsTouched();
+                subscriptions.push(
+                    listenControlTouched(control).subscribe(isTouched => {
+                        value = isTouched;
+                    }),
+                );
 
-				expect(value).toBe(true);
-			});
-		});
+                expect(value).toBe(true);
+            });
+        });
 
-		describe('control reset', () => {
-			it('emits false', () => {
-				const control = new FormControl(null);
-				let value = false;
+        describe('control reset', () => {
+            it('emits false', () => {
+                const control = new FormControl(null);
+                let value = false;
 
-				control.markAsTouched();
-				control.reset();
-				subscriptions.push(
-					listenControlTouched(control).subscribe(isTouched => {
-						value = isTouched;
-					}),
-				);
+                control.markAsTouched();
+                control.reset();
+                subscriptions.push(
+                    listenControlTouched(control).subscribe(isTouched => {
+                        value = isTouched;
+                    }),
+                );
 
-				expect(value).toBe(false);
-			});
-		});
-	});
+                expect(value).toBe(false);
+            });
+        });
+    });
 });

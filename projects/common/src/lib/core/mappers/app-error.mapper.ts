@@ -8,11 +8,11 @@ import { isValidationErrorDto, type ValidationErrorDto } from '../dtos/validatio
 /** Mapper of validation errors DTO to domain model errors. */
 type ValidationErrorMapper<TDto, TModel> = {
 
-	/**
-	 * Map validation error DTO to error for domain model.
-	 * @param errorDto Error DTO.
-	 */
-	validationErrorFromDto(errorDto: ValidationErrorDto<TDto>): EntityValidationErrors<TModel>;
+    /**
+     * Map validation error DTO to error for domain model.
+     * @param errorDto Error DTO.
+     */
+    validationErrorFromDto(errorDto: ValidationErrorDto<TDto>): EntityValidationErrors<TModel>;
 };
 
 /**
@@ -20,55 +20,55 @@ type ValidationErrorMapper<TDto, TModel> = {
  * or an implementation of `IMapper` with implemented `validationErrorFromDto` method.
  */
 export type ErrorMapper<TDto, TEntity extends Record<string, unknown>> =
-	| ValidationErrorMapper<TDto, TEntity>
-	| ValidationErrorMapper<TDto, TEntity>['validationErrorFromDto'];
+    | ValidationErrorMapper<TDto, TEntity>
+    | ValidationErrorMapper<TDto, TEntity>['validationErrorFromDto'];
 
 /** Errors mapper. */
 export namespace AppErrorMapper {
-	function fromDto(httpError: HttpErrorResponse): AppError {
-		const { statusText, error } = httpError;
-		return new AppError(error?.detail ?? statusText);
-	}
+    function fromDto(httpError: HttpErrorResponse): AppError {
+        const { statusText, error } = httpError;
+        return new AppError(error?.detail ?? statusText);
+    }
 
-	/**
-	 * Maps `HttpErrorResponse` to either `AppError` or `AppValidationError`.
-	 * @param httpError Http error.
-	 * @param mapper Mapper for backend-provided validation data into domain validation data.
-	 */
-	function fromDtoWithValidationSupport<TDto, TEntity extends Record<string, unknown>>(
-		httpError: HttpErrorResponse,
-		mapper: ErrorMapper<TDto, TEntity>,
-	): AppError | AppValidationError<TEntity> {
-		if (httpError.status !== HttpStatusCode.BadRequest) {
-			return fromDto(httpError);
-		}
+    /**
+     * Maps `HttpErrorResponse` to either `AppError` or `AppValidationError`.
+     * @param httpError Http error.
+     * @param mapper Mapper for backend-provided validation data into domain validation data.
+     */
+    function fromDtoWithValidationSupport<TDto, TEntity extends Record<string, unknown>>(
+        httpError: HttpErrorResponse,
+        mapper: ErrorMapper<TDto, TEntity>,
+    ): AppError | AppValidationError<TEntity> {
+        if (httpError.status !== HttpStatusCode.BadRequest) {
+            return fromDto(httpError);
+        }
 
-		const { error, statusText } = httpError;
-		if (error == null || !isValidationErrorDto<TDto>(error)) {
-			return fromDto(httpError);
-		}
+        const { error, statusText } = httpError;
+        if (error == null || !isValidationErrorDto<TDto>(error)) {
+            return fromDto(httpError);
+        }
 
-		const validationData = typeof mapper === 'function' ? mapper(error) : mapper.validationErrorFromDto(error);
+        const validationData = typeof mapper === 'function' ? mapper(error) : mapper.validationErrorFromDto(error);
 
-		return new AppValidationError<TEntity>(statusText, validationData);
-	}
+        return new AppValidationError<TEntity>(statusText, validationData);
+    }
 
-	/** RxJS operator that catches `HttpErrorResponse` and maps it into application error. */
-	export function catchHttpErrorToAppError<T>(): MonoTypeOperatorFunction<T> {
-		return catchHttpErrorResponse(error => {
-			throw fromDto(error);
-		});
-	}
+    /** RxJS operator that catches `HttpErrorResponse` and maps it into application error. */
+    export function catchHttpErrorToAppError<T>(): MonoTypeOperatorFunction<T> {
+        return catchHttpErrorResponse(error => {
+            throw fromDto(error);
+        });
+    }
 
-	/**
-	 * RxJS operator that catches `HttpErrorResponse` and maps it into application error that may contain validation data.
-	 * @param mapper Mapper for backend-provided validation data into domain validation data.
-	 */
-	export function catchHttpErrorToAppErrorWithValidationSupport<T, TDto, TEntity extends Record<string, unknown>>(
-		mapper: ErrorMapper<TDto, TEntity>,
-	): MonoTypeOperatorFunction<T> {
-		return catchHttpErrorResponse(error => {
-			throw fromDtoWithValidationSupport<TDto, TEntity>(error, mapper);
-		});
-	}
+    /**
+     * RxJS operator that catches `HttpErrorResponse` and maps it into application error that may contain validation data.
+     * @param mapper Mapper for backend-provided validation data into domain validation data.
+     */
+    export function catchHttpErrorToAppErrorWithValidationSupport<T, TDto, TEntity extends Record<string, unknown>>(
+        mapper: ErrorMapper<TDto, TEntity>,
+    ): MonoTypeOperatorFunction<T> {
+        return catchHttpErrorResponse(error => {
+            throw fromDtoWithValidationSupport<TDto, TEntity>(error, mapper);
+        });
+    }
 }

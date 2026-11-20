@@ -7,10 +7,10 @@ import { WINDOW } from './window-token';
 
 /** Global provider for storage. `localStorage` is used as the underlying storage mechanism by default. */
 export function provideStorage(): Provider {
-	return {
-		provide: NGXTENSION_LOCAL_STORAGE,
-		useFactory: () => inject(WINDOW).localStorage,
-	};
+    return {
+        provide: NGXTENSION_LOCAL_STORAGE,
+        useFactory: () => inject(WINDOW).localStorage,
+    };
 }
 
 /**

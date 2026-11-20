@@ -5,19 +5,19 @@ import { DateFormats, datePlaceholder } from '@nf/common/core/utils/constants/da
 
 /** Formats a Luxon `DateTime` value using Luxon format tokens. */
 @Pipe({
-	name: 'nfcDateTime',
+    name: 'nfcDateTime',
 })
 export class DateTimePipe implements PipeTransform {
-	/**
-	 * Transforms `DateTime` to a formatted string.
-	 * @param value `DateTime` value to format.
-	 * @param format Format string (Luxon format tokens).
-	 */
-	public transform(value: DateTime | null | undefined, format: string = DateFormats.DATE): string {
-		if (value?.isValid) {
-			return value.toFormat(format);
-		}
+    /**
+     * Transforms `DateTime` to a formatted string.
+     * @param value `DateTime` value to format.
+     * @param format Format string (Luxon format tokens).
+     */
+    public transform(value: DateTime | null | undefined, format: string = DateFormats.DATE): string {
+        if (value?.isValid) {
+            return value.toFormat(format);
+        }
 
-		return datePlaceholder;
-	}
+        return datePlaceholder;
+    }
 }

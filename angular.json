@@ -1,116 +1,116 @@
 {
-	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-	"cli": {
-		"analytics": false
-	},
-	"version": 1,
-	"newProjectRoot": "projects",
-	"schematics": {
-		"@schematics/angular:component": {
-			"displayBlock": true,
-			"style": "css"
-		}
-	},
-	"projects": {
-		"web": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/web",
-			"sourceRoot": "projects/web/src",
-			"prefix": "nfw",
-			"architect": {
-				"build": {
-					"builder": "@ngx-env/builder:application",
-					"options": {
-						"outputPath": "dist/web",
-						"index": "projects/web/src/index.html",
-						"browser": "projects/web/src/main.ts",
-						"tsConfig": "projects/web/tsconfig.app.json",
-						"assets": [
-							"projects/web/src/favicon.ico",
-							"projects/web/src/assets",
-							"projects/web/src/robots.txt"
-						],
-						"styles": [
-							"projects/web/src/theme/material-custom-theme.scss",
-							"projects/web/src/theme/styles.css",
-							"projects/common/src/lib/shared/theme/styles.css"
-						],
-						"scripts": [],
-						"optimization": true,
-						"outputHashing": "all"
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "2kb",
-									"maximumError": "4kb"
-								}
-							]
-						},
-						"development": {
-							"optimization": false,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						},
-						"dev-server": {
-							"outputHashing": "none",
-							"optimization": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "@ngx-env/builder:dev-server",
-					"options": {
-						"buildTarget": "web:build:dev-server",
-						"proxyConfig": "projects/web/src/proxy.conf.mjs"
-					}
-				},
-				"extract-i18n": {
-					"builder": "@ngx-env/builder:extract-i18n",
-					"options": {
-						"browserTarget": "web:build"
-					}
-				},
-				"test": {
-					"builder": "@ngx-env/builder:unit-test"
-				}
-			}
-		},
-		"common": {
-			"projectType": "library",
-			"root": "projects/common",
-			"sourceRoot": "projects/common/src",
-			"prefix": "nfc",
-			"architect": {
-				"build": {
-					"builder": "@ngx-env/builder:application",
-					"options": {
-						"tsConfig": "projects/common/tsconfig.lib.json"
-					},
-					"configurations": {
-						"development": {}
-					}
-				},
-				"test": {
-					"builder": "@ngx-env/builder:unit-test"
-				}
-			}
-		}
-	}
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "cli": {
+        "analytics": false
+    },
+    "version": 1,
+    "newProjectRoot": "projects",
+    "schematics": {
+        "@schematics/angular:component": {
+            "displayBlock": true,
+            "style": "css"
+        }
+    },
+    "projects": {
+        "web": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:application": {
+                    "strict": true
+                }
+            },
+            "root": "projects/web",
+            "sourceRoot": "projects/web/src",
+            "prefix": "nfw",
+            "architect": {
+                "build": {
+                    "builder": "@ngx-env/builder:application",
+                    "options": {
+                        "outputPath": "dist/web",
+                        "index": "projects/web/src/index.html",
+                        "browser": "projects/web/src/main.ts",
+                        "tsConfig": "projects/web/tsconfig.app.json",
+                        "assets": [
+                            "projects/web/src/favicon.ico",
+                            "projects/web/src/assets",
+                            "projects/web/src/robots.txt"
+                        ],
+                        "styles": [
+                            "projects/web/src/theme/material-custom-theme.scss",
+                            "projects/web/src/theme/styles.css",
+                            "projects/common/src/lib/shared/theme/styles.css"
+                        ],
+                        "scripts": [],
+                        "optimization": true,
+                        "outputHashing": "all"
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "500kb",
+                                    "maximumError": "1mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "2kb",
+                                    "maximumError": "4kb"
+                                }
+                            ]
+                        },
+                        "development": {
+                            "optimization": false,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        },
+                        "dev-server": {
+                            "outputHashing": "none",
+                            "optimization": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@ngx-env/builder:dev-server",
+                    "options": {
+                        "buildTarget": "web:build:dev-server",
+                        "proxyConfig": "projects/web/src/proxy.conf.mjs"
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@ngx-env/builder:extract-i18n",
+                    "options": {
+                        "browserTarget": "web:build"
+                    }
+                },
+                "test": {
+                    "builder": "@ngx-env/builder:unit-test"
+                }
+            }
+        },
+        "common": {
+            "projectType": "library",
+            "root": "projects/common",
+            "sourceRoot": "projects/common/src",
+            "prefix": "nfc",
+            "architect": {
+                "build": {
+                    "builder": "@ngx-env/builder:application",
+                    "options": {
+                        "tsConfig": "projects/common/tsconfig.lib.json"
+                    },
+                    "configurations": {
+                        "development": {}
+                    }
+                },
+                "test": {
+                    "builder": "@ngx-env/builder:unit-test"
+                }
+            }
+        }
+    }
 }

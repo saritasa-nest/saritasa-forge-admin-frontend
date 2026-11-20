@@ -3,8 +3,8 @@ import { z } from 'zod';
 /** Success response DTO schema. */
 export const successResponseDtoSchema = z.object({
 
-	/** Human-readable notification that an operation was successful. */
-	detail: z.string(),
+    /** Human-readable notification that an operation was successful. */
+    detail: z.string(),
 });
 
 /** Represents an information about a successful operation. */

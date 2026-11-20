@@ -8,25 +8,25 @@ import { Observable } from 'rxjs';
  * @param control Control to listen for.
  */
 export function listenControlTouched(control: AbstractControl): Observable<boolean> {
-	return new Observable<boolean>(observer => {
-		const originalMarkAsTouched = control.markAsTouched;
-		const originalReset = control.reset;
+    return new Observable<boolean>(observer => {
+        const originalMarkAsTouched = control.markAsTouched;
+        const originalReset = control.reset;
 
-		control.reset = (...args) => {
-			originalReset.call(control, ...args);
-			observer.next(false);
-		};
+        control.reset = (...args) => {
+            originalReset.call(control, ...args);
+            observer.next(false);
+        };
 
-		control.markAsTouched = (...args) => {
-			originalMarkAsTouched.call(control, ...args);
-			observer.next(true);
-		};
+        control.markAsTouched = (...args) => {
+            originalMarkAsTouched.call(control, ...args);
+            observer.next(true);
+        };
 
-		observer.next(control.touched);
+        observer.next(control.touched);
 
-		return () => {
-			control.markAsTouched = originalMarkAsTouched;
-			control.reset = originalReset;
-		};
-	});
+        return () => {
+            control.markAsTouched = originalMarkAsTouched;
+            control.reset = originalReset;
+        };
+    });
 }

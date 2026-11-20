@@ -21,17 +21,17 @@ const WEB_ROUTE_PATHS_TOKEN = new InjectionToken<WebRoutePaths>('Provide object 
  * ```
  */
 export const webRoutePaths = buildRoutePaths({
-	...commonRoutePaths,
+    ...commonRoutePaths,
 });
 
 type WebRoutePaths = typeof webRoutePaths;
 
 /** Create provider for a web route paths. */
 export function provideWebAppRoutes(): Provider {
-	return {
-		provide: WEB_ROUTE_PATHS_TOKEN,
-		useValue: webRoutePaths,
-	};
+    return {
+        provide: WEB_ROUTE_PATHS_TOKEN,
+        useValue: webRoutePaths,
+    };
 }
 
 /**
@@ -47,5 +47,5 @@ export function provideWebAppRoutes(): Provider {
  * ```
  */
 export function injectWebAppRoutes(): WebRoutePaths {
-	return inject(WEB_ROUTE_PATHS_TOKEN);
+    return inject(WEB_ROUTE_PATHS_TOKEN);
 }
