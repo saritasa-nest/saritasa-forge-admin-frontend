@@ -22,6 +22,7 @@ const WEB_ROUTE_PATHS_TOKEN = new InjectionToken<WebRoutePaths>('Provide object 
  */
 export const webRoutePaths = buildRoutePaths({
     ...commonRoutePaths,
+    entities: { path: 'entities' },
 });
 
 type WebRoutePaths = typeof webRoutePaths;
