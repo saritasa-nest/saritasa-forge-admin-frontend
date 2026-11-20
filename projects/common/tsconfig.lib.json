@@ -1,0 +1,12 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"declaration": true,
+		"declarationMap": true,
+		"inlineSources": true,
+		"types": []
+	},
+	"include": ["src/**/*.ts", "src/**/*.d.ts"],
+	"exclude": ["**/*.spec.ts", "src/testing/**/*.ts"]
+}

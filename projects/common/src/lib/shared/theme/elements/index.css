@@ -1,0 +1,3 @@
+/* Barrel file for element's styles that are shared across projects. */
+@import url("./list.css");
+@import url("./image.css");

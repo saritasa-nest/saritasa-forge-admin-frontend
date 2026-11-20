@@ -1,0 +1,46 @@
+name: Run build
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop, 'feature/**']
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  build:
+    runs-on: saritasa-rocks-eks
+    permissions:
+      contents: read
+      packages: read
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v7
+
+      - name: Install Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: 'package.json'
+          cache: 'npm'
+
+      - name: Setup cache
+        uses: actions/cache@v6
+        id: npm-cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Set up npm authentication
+        run: |
+          npm config set @saritasa-nest:registry=https://npm.pkg.github.com/
+          npm config set //npm.pkg.github.com/:_authToken=${NPM_AUTH_TOKEN}
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Build app
+        run: npm run build:dev

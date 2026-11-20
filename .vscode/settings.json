@@ -1,0 +1,4 @@
+{
+	"eslint.validate": ["javascript", "typescript", "html"],
+	"stylelint.validate": ["css", "scss", "less"]
+}

@@ -1,0 +1,13 @@
+name: Auto Author Assign
+
+on:
+  pull_request:
+    branches: [develop, 'feature/**']
+    types: [opened, reopened]
+
+jobs:
+  assign-author:
+    runs-on: saritasa-rocks-eks
+
+    steps:
+      - uses: toshimaru/auto-author-assign@v3.1.0
