@@ -1,4 +1,4 @@
-import { createTestScheduler } from '@saanbo/common/testing/utils';
+import { createTestScheduler } from '@nf/common/testing/utils';
 
 import { filterNull } from './filter-null';
 

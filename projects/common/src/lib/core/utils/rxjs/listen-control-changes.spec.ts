@@ -2,7 +2,7 @@ import { FormControl } from '@angular/forms';
 import { type Subscription } from 'rxjs';
 import { z } from 'zod';
 
-import { tickAsync } from '@saanbo/common/testing/utils';
+import { tickAsync } from '@nf/common/testing/utils';
 
 import { listenControlChanges } from './listen-control-changes';
 

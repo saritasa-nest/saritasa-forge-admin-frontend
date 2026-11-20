@@ -1,4 +1,4 @@
-# saritasa-angular-boilerplate
+# netforge-admin-client
 
 ---
 
@@ -9,12 +9,12 @@
 <section>
   <ol class="next-steps">
     <li>
-      Globally replace <code>saritasa-angular-boilerplate</code> to your project
+      Globally replace <code>netforge-admin-client</code> to your project
       name in
       <em>kebab-case</em>
     </li>
     <li>
-      Globally replace <code>saanbo</code> to your project prefix, it should be
+      Globally replace <code>nf</code> to your project prefix, it should be
       a short lowercased abbreviation of your project name
     </li>
     <li>Set up the environment</li>
@@ -231,7 +231,7 @@ Please see [Angular guideline](https://angular.io/guide/build#using-environment-
 
 ### Generating new app
 
-1. Create new application `npx ng g app <app_name> -p saanbo<first_letter_of_your_app_name>`
+1. Create new application `npx ng g app <app_name> -p nf<first_letter_of_your_app_name>`
 2. Add [env declaration](env.d.ts) into the [files] section of newly-created tsconfigs (`tsconfig.{app|spec}.json`). See example in the [original tsconfig files](projects/web/tsconfig.app.json)
 3. Set up basic structure for this app `features`, `shared` etc.
 4. (optional) Set up component libraries

@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Injectable, inject } from '@angular/core';
 
-import { AppConfig } from '@saanbo/common/core/services/app.config';
+import { AppConfig } from '@nf/common/core/services/app.config';
 
 /** App-specific implementation of app config. */
 @Injectable()

@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 
 /** Root component. */
 @Component({
-	selector: 'saanbow-root',
+	selector: 'nfw-root',
 	templateUrl: './app.html',
 	styleUrl: './app.css',
 	imports: [RouterOutlet],

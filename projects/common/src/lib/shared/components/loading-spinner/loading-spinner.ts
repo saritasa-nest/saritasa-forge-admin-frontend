@@ -3,7 +3,7 @@ import { MatProgressSpinner, type ProgressSpinnerMode } from '@angular/material/
 
 /** Loading spinner component. */
 @Component({
-	selector: 'saanboc-loading-spinner',
+	selector: 'nfc-loading-spinner',
 	templateUrl: './loading-spinner.html',
 	styleUrl: './loading-spinner.css',
 	imports: [MatProgressSpinner],

@@ -1,7 +1,7 @@
 import { inject, InjectionToken, type Provider } from '@angular/core';
 
-import { buildRoutePaths } from '@saanbo/common/core/utils/route-paths/build-route-paths';
-import { commonRoutePaths } from '@saanbo/common/core/utils/route-paths/common-route-paths';
+import { buildRoutePaths } from '@nf/common/core/utils/route-paths/build-route-paths';
+import { commonRoutePaths } from '@nf/common/core/utils/route-paths/common-route-paths';
 
 /** Injection token that provide object with route web app paths. */
 const WEB_ROUTE_PATHS_TOKEN = new InjectionToken<WebRoutePaths>('Provide object with web route paths');
@@ -22,15 +22,6 @@ const WEB_ROUTE_PATHS_TOKEN = new InjectionToken<WebRoutePaths>('Provide object 
  */
 export const webRoutePaths = buildRoutePaths({
 	...commonRoutePaths,
-	dashboard: { path: 'dashboard' },
-	auth: {
-		path: 'auth',
-		children: {
-			login: { path: 'login' },
-			forgotPassword: { path: 'forgot-password' },
-			confirmPassword: { path: 'confirm-password' },
-		},
-	},
 });
 
 type WebRoutePaths = typeof webRoutePaths;

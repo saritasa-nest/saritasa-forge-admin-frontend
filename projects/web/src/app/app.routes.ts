@@ -46,18 +46,4 @@ import { webRoutePaths } from './features/shared/web-route-paths';
  * ];
  * ```
  */
-export const appRoutes: Routes = [
-	{
-		path: '',
-		redirectTo: webRoutePaths.dashboard.path,
-		pathMatch: 'full',
-	},
-	{
-		path: webRoutePaths.auth.path,
-		loadChildren: () => import('./features/auth/auth.routes').then(r => r.authRoutes),
-	},
-	{
-		path: webRoutePaths.dashboard.path,
-		loadChildren: () => import('./features/dashboard/dashboard.routes').then(r => r.dashboardRoutes),
-	},
-];
+export const appRoutes: Routes = [];

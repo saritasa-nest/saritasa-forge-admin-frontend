@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
 
-import { DateFormats, datePlaceholder } from '@saanbo/common/core/utils/constants/date-formats';
+import { DateFormats, datePlaceholder } from '@nf/common/core/utils/constants/date-formats';
 
 import { DateTimePipe } from './date-time.pipe';
 

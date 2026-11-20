@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { type Observer, throwError } from 'rxjs';
 
-import { createObserverSpy, getHttpStatusData } from '@saanbo/common/testing/utils';
+import { createObserverSpy, getHttpStatusData } from '@nf/common/testing/utils';
 
 import { catchHttpErrorResponse } from './catch-http-error-response';
 

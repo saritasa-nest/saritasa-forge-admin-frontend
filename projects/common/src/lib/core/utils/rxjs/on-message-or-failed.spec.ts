@@ -1,7 +1,7 @@
 import { type MockedObject } from 'vitest';
 import { type Observer, of, throwError } from 'rxjs';
 
-import { createObserverSpy, createTestScheduler } from '@saanbo/common/testing/utils';
+import { createObserverSpy, createTestScheduler } from '@nf/common/testing/utils';
 
 import { onMessageOrFailed } from './on-message-or-failed';
 

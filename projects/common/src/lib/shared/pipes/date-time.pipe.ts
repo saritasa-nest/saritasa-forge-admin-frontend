@@ -1,11 +1,11 @@
 import { Pipe, type PipeTransform } from '@angular/core';
 import { type DateTime } from 'luxon';
 
-import { DateFormats, datePlaceholder } from '@saanbo/common/core/utils/constants/date-formats';
+import { DateFormats, datePlaceholder } from '@nf/common/core/utils/constants/date-formats';
 
 /** Formats a Luxon `DateTime` value using Luxon format tokens. */
 @Pipe({
-	name: 'saanbocDateTime',
+	name: 'nfcDateTime',
 })
 export class DateTimePipe implements PipeTransform {
 	/**

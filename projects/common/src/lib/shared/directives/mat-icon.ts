@@ -21,7 +21,7 @@ export type MaterialSymbolConfig = Readonly<{
 
 /** Material icon settings directive. */
 @Directive({
-	selector: 'mat-icon[saanbocMatIcon]',
+	selector: 'mat-icon[nfcMatIcon]',
 	host: {
 		// eslint-disable-next-line @typescript-eslint/naming-convention
 		'[style.font-variation-settings]': 'fontVariationSettings()',

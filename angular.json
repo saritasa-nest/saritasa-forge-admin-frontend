@@ -21,7 +21,7 @@
 			},
 			"root": "projects/web",
 			"sourceRoot": "projects/web/src",
-			"prefix": "saanbow",
+			"prefix": "nfw",
 			"architect": {
 				"build": {
 					"builder": "@ngx-env/builder:application",
@@ -96,7 +96,7 @@
 			"projectType": "library",
 			"root": "projects/common",
 			"sourceRoot": "projects/common/src",
-			"prefix": "saanboc",
+			"prefix": "nfc",
 			"architect": {
 				"build": {
 					"builder": "@ngx-env/builder:application",

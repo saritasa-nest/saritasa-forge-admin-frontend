@@ -1,7 +1,7 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { type ValidationError, type WithOptionalFieldTree } from '@angular/forms/signals';
 
-import { byTestId } from '@saanbo/common/testing/utils';
+import { byTestId } from '@nf/common/testing/utils';
 
 import { ValidationMessage } from './validation-message';
 

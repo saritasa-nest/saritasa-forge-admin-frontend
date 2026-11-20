@@ -3,9 +3,9 @@
 	"compileOnSave": false,
 	"compilerOptions": {
 		"paths": {
-			"@saanbo/common/*": ["./projects/common/src/lib/*"],
-			"@saanbo/common/testing/*": ["./projects/common/src/testing/*"],
-			"@saanbo/web/shared/*": ["./projects/web/src/app/features/shared/*"]
+			"@nf/common/*": ["./projects/common/src/lib/*"],
+			"@nf/common/testing/*": ["./projects/common/src/testing/*"],
+			"@nf/web/shared/*": ["./projects/web/src/app/features/shared/*"]
 		},
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,

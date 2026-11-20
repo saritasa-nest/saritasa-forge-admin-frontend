@@ -1,6 +1,6 @@
 import { BehaviorSubject } from 'rxjs';
 
-import { createTestScheduler } from '@saanbo/common/testing/utils';
+import { createTestScheduler } from '@nf/common/testing/utils';
 
 import { toggleExecutionState } from './toggle-execution-state';
 

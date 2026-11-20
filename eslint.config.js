@@ -24,7 +24,7 @@ export default defineConfig(
 					'pathGroups': [
 						{
 							group: 'internal',
-							pattern: '@saanbo/**',
+							pattern: '@nf/**',
 						},
 					],
 					'pathGroupsExcludedImportTypes': [],
@@ -35,7 +35,7 @@ export default defineConfig(
 				{
 					patterns: [
 						{
-							group: ['@saanbo/*', '!@saanbo/common'],
+							group: ['@nf/*', '!@nf/common'],
 							message: `You can not import from one application to another directly,
 							please move the reusable/shared entities into common library.
 							https://wiki.saritasa.rocks/frontend/frameworks/angular/project-structure#relationships-between-applications`,
@@ -51,7 +51,7 @@ export default defineConfig(
 			'@angular-eslint/component-selector': [
 				'error',
 				{
-					prefix: 'saanboc',
+					prefix: 'nfc',
 					style: 'kebab-case',
 					type: 'element',
 				},
@@ -59,7 +59,7 @@ export default defineConfig(
 			'@angular-eslint/directive-selector': [
 				'error',
 				{
-					prefix: 'saanboc',
+					prefix: 'nfc',
 					style: 'camelCase',
 					type: 'attribute',
 				},
@@ -67,7 +67,7 @@ export default defineConfig(
 			'@angular-eslint/pipe-prefix': [
 				'error',
 				{
-					prefixes: ['saanboc'],
+					prefixes: ['nfc'],
 				},
 			],
 		},
@@ -78,7 +78,7 @@ export default defineConfig(
 			'@angular-eslint/component-selector': [
 				'error',
 				{
-					prefix: 'saanbow',
+					prefix: 'nfw',
 					style: 'kebab-case',
 					type: 'element',
 				},
@@ -86,7 +86,7 @@ export default defineConfig(
 			'@angular-eslint/directive-selector': [
 				'error',
 				{
-					prefix: 'saanbow',
+					prefix: 'nfw',
 					style: 'camelCase',
 					type: 'attribute',
 				},
@@ -94,7 +94,7 @@ export default defineConfig(
 			'@angular-eslint/pipe-prefix': [
 				'error',
 				{
-					prefixes: ['saanbow'],
+					prefixes: ['nfw'],
 				},
 			],
 			'no-restricted-imports': [
@@ -103,9 +103,9 @@ export default defineConfig(
 					patterns: [
 						{
 							// Restrict imports from any app that is NOT 'web' or 'common'.
-							// This effectively allows `@saanbo/web/shared` while still blocking `@saanbo/mobile/*`, etc.
-							group: ['@saanbo/!(web|common)/*'],
-							message: 'The web app cannot import from other applications. Use \'@saanbo/common\' for shared code, or \'@saanbo/web/shared\' for web-specific shared code.',
+							// This effectively allows `@nf/web/shared` while still blocking `@nf/mobile/*`, etc.
+							group: ['@nf/!(web|common)/*'],
+							message: 'The web app cannot import from other applications. Use \'@nf/common\' for shared code, or \'@nf/web/shared\' for web-specific shared code.',
 						},
 					],
 				},

@@ -5,7 +5,7 @@ const DEFAULT_ERROR_MESSAGE = 'Value is not valid';
 
 /** Validation error renderer for signal forms. */
 @Component({
-	selector: 'saanboc-validation-message',
+	selector: 'nfc-validation-message',
 	templateUrl: './validation-message.html',
 	styleUrl: './validation-message.css',
 })

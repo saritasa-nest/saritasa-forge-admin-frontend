@@ -2,7 +2,7 @@ import { type MockedObject } from 'vitest';
 import { FormControl } from '@angular/forms';
 import { type Observer, tap } from 'rxjs';
 
-import { createObserverSpy, createTestScheduler } from '@saanbo/common/testing/utils';
+import { createObserverSpy, createTestScheduler } from '@nf/common/testing/utils';
 
 import { disableControlUntilEmitOrFailed } from './disable-control-until-emit';
 
