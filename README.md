@@ -1,38 +1,5 @@
 # netforge-admin-client
 
----
-
-<!-- TODO: This section is to be removed when a project is started. -->
-
-## Boilerplate info (to be removed)
-
-<section>
-  <ol class="next-steps">
-    <li>
-      Globally replace <code>netforge-admin-client</code> to your project
-      name in
-      <em>kebab-case</em>
-    </li>
-    <li>
-      Globally replace <code>nf</code> to your project prefix, it should be
-      a short lowercased abbreviation of your project name
-    </li>
-    <li>Set up the environment</li>
-    <li>Delete the <code>dashboard</code> feature</li>
-    <li>Fill the root README with relevant data and remove this section</li>
-    <li>
-      Adjust <code>CODEOWNERS</code> of your application, make sure you have at
-      least one code reviewer before starting a project 👨‍💻
-    </li>
-  </ol>
-
-  <p>
-    <strong>And that's it, your're ready to go! 🥷😎</strong>
-  </p>
-</section>
-
----
-
 ## Resources
 
 - [Jira](https://saritasa.atlassian.net/jira/your-work)
@@ -51,7 +18,7 @@ Please see the `package.json` to see different build configurations
 Frontend applications often need a local development proxy to avoid browser CORS
 restrictions, especially when the backend uses cookie-based authentication.
 
-The boilerplate includes a development proxy in [projects/web/src/proxy.conf.mjs](projects/web/src/proxy.conf.mjs).
+The project includes a development proxy in [projects/web/src/proxy.conf.mjs](projects/web/src/proxy.conf.mjs).
 It is wired through [angular.json](angular.json) and loaded by the Angular dev server.
 
 Running `npm start` enables proxy mode by default. The script sets
