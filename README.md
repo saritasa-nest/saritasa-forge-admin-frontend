@@ -26,7 +26,7 @@ DTOs are hand-written zod schemas in `projects/common/src/lib/core/dtos`; see "S
 
 ## Run
 
-1. In the backend repo, start the demo host: `dotnet run --project demo/Saritasa.NetForge.Demo --launch-profile "Run Web"`.
+1. In [the backend repo](https://github.com/saritasa-nest/saritasa-forge-admin), start the demo host: `dotnet run --project demo/Saritasa.NetForge.Demo --launch-profile "Run Web"`.
 2. Here: `npm ci`, then `npm start`, open `http://localhost:4200`.
 
 `npm start` enables proxy mode: `/api/*` is forwarded to `https://localhost:5001/admin/api/*`
