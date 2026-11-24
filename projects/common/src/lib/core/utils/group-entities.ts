@@ -7,15 +7,14 @@ import { type EntityGroupWithEntities, type EntitySummary } from '../models/enti
  */
 export function groupEntities(entities: readonly EntitySummary[]): readonly EntityGroupWithEntities[] {
     const sortedEntities = [...entities].sort((first, second) => first.pluralName.localeCompare(second.pluralName));
-    const groupsByName = new Map<string, EntityGroupWithEntities & { entities: EntitySummary[]; }>();
-    for (const entity of sortedEntities) {
-        let group = groupsByName.get(entity.group.name);
-        if (group == null) {
-            group = { ...entity.group, entities: [] };
-            groupsByName.set(entity.group.name, group);
+    const groupsByName = Map.groupBy(sortedEntities, entity => entity.group.name);
+
+    return Array.from(groupsByName.values(), entitiesInGroup => {
+        const [firstEntity] = entitiesInGroup;
+        if (firstEntity == null) {
+            throw new Error('No entity in the group.');
         }
 
-        group.entities.push(entity);
-    }
-    return [...groupsByName.values()];
+        return { ...firstEntity.group, entities: entitiesInGroup };
+    });
 }
