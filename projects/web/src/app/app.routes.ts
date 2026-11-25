@@ -46,4 +46,18 @@ import { webRoutePaths } from './features/shared/web-route-paths';
  * ];
  * ```
  */
-export const appRoutes: Routes = [];
+export const appRoutes: Routes = [
+    {
+        path: webRoutePaths.home.path,
+        redirectTo: webRoutePaths.entities.path,
+        pathMatch: 'full',
+    },
+    {
+        path: webRoutePaths.entities.path,
+        loadChildren: () => import('./features/entities/entities.routes').then(r => r.entitiesRoutes),
+    },
+    {
+        path: '**',
+        redirectTo: webRoutePaths.entities.path,
+    },
+];

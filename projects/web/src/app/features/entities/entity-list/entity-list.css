@@ -1,0 +1,5 @@
+.group-title {
+    width: fit-content;
+    margin-top: 24px;
+    font: var(--mat-sys-title-large);
+}

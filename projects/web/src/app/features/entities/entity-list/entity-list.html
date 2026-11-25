@@ -1,0 +1,24 @@
+@if (entities.isLoading()) {
+    <nfc-loading-spinner [diameter]="40" />
+} @else if (entities.error()) {
+    <p>Failed to load entities.</p>
+} @else if (groups().length === 0) {
+    <p>No entities configured to be displayed.</p>
+} @else {
+    @for (group of groups(); track group.name) {
+        <h2
+            class="group-title"
+            [matTooltip]="group.description ?? ''"
+        >
+            {{ group.name }}
+        </h2>
+        <mat-list>
+            @for (entity of group.entities; track entity.stringId) {
+                <mat-list-item>
+                    <span matListItemTitle>{{ entity.pluralName }}</span>
+                    <span matListItemLine>{{ entity.description }}</span>
+                </mat-list-item>
+            }
+        </mat-list>
+    }
+}

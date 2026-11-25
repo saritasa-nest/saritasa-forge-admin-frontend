@@ -10,6 +10,11 @@ import { AppConfig } from './app.config';
 export class AppUrlsConfig {
     private readonly appConfigService = inject(AppConfig);
 
+    /** Entity-related routes. */
+    public readonly entities = {
+        list: this.toApi('entities'),
+    } as const;
+
     /**
      * Checks whether the url is application-scoped.
      * @param url Url to check.

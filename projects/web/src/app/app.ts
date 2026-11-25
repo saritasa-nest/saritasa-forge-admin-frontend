@@ -1,15 +1,26 @@
 import { Component, inject } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
-import { RouterOutlet } from '@angular/router';
+import { MatToolbar } from '@angular/material/toolbar';
+import { RouterLink, RouterOutlet } from '@angular/router';
+
+import { AppConfig } from '@nf/common/core/services/app.config';
+
+import { injectWebAppRoutes } from './features/shared/web-route-paths';
 
 /** Root component. */
 @Component({
     selector: 'nfw-root',
     templateUrl: './app.html',
     styleUrl: './app.css',
-    imports: [RouterOutlet],
+    imports: [MatToolbar, RouterLink, RouterOutlet],
 })
 export class AppComponent {
+    /** App config. */
+    protected readonly appConfig = inject(AppConfig);
+
+    /** Route paths. */
+    protected readonly routePaths = injectWebAppRoutes();
+
     private readonly matIconReg: MatIconRegistry = inject(MatIconRegistry);
 
     public constructor() {

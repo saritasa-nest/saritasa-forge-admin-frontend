@@ -1,1 +1,12 @@
-<router-outlet />
+<mat-toolbar class="toolbar">
+    <a
+        class="brand"
+        [routerLink]="routePaths.entities.url"
+    >
+        NetForge Admin
+    </a>
+    <span class="version">v. {{ appConfig.version }}</span>
+</mat-toolbar>
+<main class="content">
+    <router-outlet />
+</main>

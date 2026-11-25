@@ -3,20 +3,13 @@ export default [
     {
         context: ['/api'],
 
-        // TODO (Template): Replace this placeholder with your backend target.
-        target: 'https://api.example.com',
+        // NetForge demo host. The admin panel API lives under `/admin/api`.
+        target: 'https://localhost:5001',
         secure: false,
         changeOrigin: true,
         cookieDomainRewrite: 'localhost',
-    },
-    {
-        context: ['/hubs'],
-
-        // TODO (Template): Replace this placeholder with your backend target.
-        target: 'https://api.example.com',
-        secure: false,
-        changeOrigin: true,
-        ws: true,
-        cookieDomainRewrite: 'localhost',
+        pathRewrite: {
+            '^/api': '/admin/api',
+        },
     },
 ];
