@@ -7,7 +7,7 @@ on:
 
 jobs:
   assign-author:
-    runs-on: saritasa-rocks-eks
+    runs-on: ubuntu-latest
 
     steps:
       - uses: toshimaru/auto-author-assign@v3.1.0
