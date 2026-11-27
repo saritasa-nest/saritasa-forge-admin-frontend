@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: saritasa-rocks-eks
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: read
